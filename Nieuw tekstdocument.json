@@ -1,0 +1,22 @@
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const snekfetch = require('snekfetch')
+const token = 'dbl token';
+
+
+client.on('ready', () => {
+
+  setTimeout(() => {
+  snekfetch.post(`https://discordbots.org/api/bots/stats`)
+  .set('Authorization', token)
+  .send({"server_count": client.guilds.size})
+  .then(() => console.log('Updated discordbots.org stats.'))
+  .catch(err => console.error(`Whoops something went wrong: ${err.body.error}`));
+}, 3000);
+
+
+});
+
+client.login("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQzMjkwNzE1MjkyNDA4MjE4OCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTIzNzA3OTE4fQ.pbBfU8KRlmLXIiOPZ01pYyOiZIS3XpjruKnaorn_5Q4
+
+")
